@@ -20,3 +20,9 @@
 .logo {
   height: 80%;
 }
+
+@media (max-width: 499px) {
+  .desktopOnly {
+    display: none;
+  }
+}
