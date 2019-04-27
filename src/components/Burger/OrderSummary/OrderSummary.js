@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Aux from '../../../hoc/Aux';
+import Aux from '../../../hoc/Aux/Aux';
 class OrderSummary extends Component {
   componentWillUpdate() {
     console.log(`[OrderSummary] will update!`)
