@@ -6,12 +6,23 @@ import Button from '../Button/Button';
 
 class Modal extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.show !== this.props.show;
+    return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
   }
   componentWillUpdate() {
     console.log(`[Modal] will update!`);
   }
   render() {
+    let actioButtons = <Aux>
+      <Button btnType="danger" clicked={this.props.closeModal}>
+        CANCEL
+        </Button>
+      <Button btnType="success" clicked={this.props.continuePurchase}>
+        CONTINUE
+        </Button>
+    </Aux>;
+    if (this.props.loading) {
+      actioButtons = '';
+    }
     return (
       <Aux>
         <Backdrop show={this.props.show} clicked={this.props.closeModal} />
@@ -25,12 +36,7 @@ class Modal extends Component {
           }}
         >
           {this.props.children}
-          <Button btnType="danger" clicked={this.props.closeModal}>
-            CANCEL
-        </Button>
-          <Button btnType="success" clicked={this.props.continuePurchase}>
-            CONTINUE
-        </Button>
+          {actioButtons}
         </div>
       </Aux>
     );
