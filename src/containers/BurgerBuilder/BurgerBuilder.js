@@ -89,29 +89,30 @@ class BurgerBuilder extends Component {
     this.setState({ purchasing: false });
   };
   purchaseContinueHandler = () => {
-    this.setState({ loading: true });
-    const orderData = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: 'Vikas Kumar',
-        address: {
-          street: '2nd main, Hanuman Nagar',
-          city: 'Laxmanpur',
-          state: 'Uttar Pradesh',
-          zipcode: '226014',
-          country: 'Bharat'
-        }
-      },
-      deliveryMode: 'fastest'
-    }
-    axiosInstance.post('/orders.json', orderData)
-      .then(response => {
-        this.setState({ loading: false, purchasing: false });
-      })
-      .catch(error => {
-        this.setState({ loading: false, purchasing: false });
-      });
+    // this.setState({ loading: true });
+    // const orderData = {
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: 'Vikas Kumar',
+    //     address: {
+    //       street: '2nd main, Hanuman Nagar',
+    //       city: 'Laxmanpur',
+    //       state: 'Uttar Pradesh',
+    //       zipcode: '226014',
+    //       country: 'Bharat'
+    //     }
+    //   },
+    //   deliveryMode: 'fastest'
+    // }
+    // axiosInstance.post('/orders.json', orderData)
+    //   .then(response => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   })
+    //   .catch(error => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   });
+    this.props.history.push('/checkout');
   };
   render() {
     const disabledInfo = {
