@@ -3,7 +3,7 @@ import Order from "../../components/Order/Order";
 import axiosInstance from "../../axios-orders";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import Spinner from "../../components/UI/Spinner/Spinner";
-
+import styles from "./Orders.module.css";
 class Orders extends Component {
     state = {
         orders: [],
@@ -29,6 +29,7 @@ class Orders extends Component {
     render() {
         return (
             <div>
+                <div className={styles.title}><h1>Orders</h1></div>
                 {this.state.orders.map(order => <Order key={order.id} ingredients={order.ingredients} price={order.price} />)}
             </div>
         );
