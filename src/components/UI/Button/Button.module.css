@@ -8,17 +8,24 @@
   padding: 10px;
   margin: 10px;
   font-weight: bold;
+  box-sizing: border-box;
 }
 
 .button:first-of-type {
   margin-left: 0;
-  padding-left: 0;
 }
 
 .success {
-  color: #5c9210;
+  background-color: #5c9210;
 }
 
 .danger {
-  color: #944317;
+  background-color: #944317;
+}
+
+.disabled {
+  display: inline-block;
+  color: rgb(211, 211, 211);
+  background-color: #f4f4f4;
+  cursor: not-allowed;
 }

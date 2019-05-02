@@ -117,6 +117,7 @@ class ContactData extends Component {
             }
 
         },
+        isFormValid: false,
         loading: false
     }
     orderHandler = (event) => {
@@ -151,7 +152,12 @@ class ContactData extends Component {
         updatedOrderForm[elementIdentifier] = updatedFormElement;
         updatedFormElement.validation.isValid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.validation.touched = true;
-        this.setState({ orderForm: updatedOrderForm });
+        let isFormValid = true;
+        for (let elementIdentifier in updatedOrderForm) {
+            isFormValid = updatedOrderForm[elementIdentifier].validation.isValid && isFormValid;
+        }
+        console.log(this.state.isFormValid);
+        this.setState({ orderForm: updatedOrderForm, isFormValid: isFormValid });
     }
     checkValidity(value, rules) {
         let valid = true;
@@ -188,7 +194,8 @@ class ContactData extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 )}
-                <Button btnType="success" clicked={this.orderHandler}>ORDER NOW</Button>
+                <Button btnType="success" clicked={this.orderHandler}
+                    disabled={!this.state.isFormValid}>ORDER NOW</Button>
             </form>
         );
         if (this.state.loading) {
