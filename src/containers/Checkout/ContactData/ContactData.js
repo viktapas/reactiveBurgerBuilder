@@ -19,7 +19,8 @@ class ContactData extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    isValid: false
+                    isValid: false,
+                    touched: false
                 }
             },
             email: {
@@ -32,7 +33,8 @@ class ContactData extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    isValid: false
+                    isValid: false,
+                    touched: false
                 }
             },
             street: {
@@ -45,7 +47,8 @@ class ContactData extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    isValid: false
+                    isValid: false,
+                    touched: false
                 }
             },
             city: {
@@ -58,7 +61,8 @@ class ContactData extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    isValid: false
+                    isValid: false,
+                    touched: false
                 }
             },
             zip: {
@@ -73,7 +77,8 @@ class ContactData extends Component {
                     required: true,
                     isValid: false,
                     minLength: 3,
-                    maxLength: 5
+                    maxLength: 5,
+                    touched: false
                 }
             },
             country: {
@@ -86,7 +91,8 @@ class ContactData extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    isValid: false
+                    isValid: false,
+                    touched: false
                 }
             },
             deliveryMode: {
@@ -102,6 +108,10 @@ class ContactData extends Component {
                         valueName: 'Cheapest',
                         value: 'cheapest'
                     }]
+                },
+                validation: {
+                    isValid: false,
+                    touched: false
                 },
                 value: ''
             }
@@ -134,14 +144,14 @@ class ContactData extends Component {
         const updatedOrderForm = {
             ...this.state.orderForm
         }
-        const updateFormElement = {
+        const updatedFormElement = {
             ...updatedOrderForm[elementIdentifier]
         }
-        updateFormElement.value = event.target.value;
-        updatedOrderForm[elementIdentifier] = updateFormElement;
-        updateFormElement.validation.isValid = this.checkValidity(updateFormElement.value, updateFormElement.validation);
+        updatedFormElement.value = event.target.value;
+        updatedOrderForm[elementIdentifier] = updatedFormElement;
+        updatedFormElement.validation.isValid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        updatedFormElement.validation.touched = true;
         this.setState({ orderForm: updatedOrderForm });
-        console.log(updateFormElement.validation.isValid)
     }
     checkValidity(value, rules) {
         let valid = true;
@@ -172,6 +182,9 @@ class ContactData extends Component {
                         name={formElement.config.elementName}
                         elementConfig={formElement.config.elementConfig}
                         value={formElement.config.value}
+                        invalid={!formElement.config.validation.isValid}
+                        shouldValidate={formElement.config.validation}
+                        touched={formElement.config.validation.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 )}
