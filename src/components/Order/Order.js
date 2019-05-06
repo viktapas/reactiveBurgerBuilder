@@ -24,9 +24,11 @@ const Order = (props) => {
             {ing.name} ({ing.amount})
         </span>));
 
+    const price = +props.price;
+
     return (<div className={styles.order}>
         <p>Ingredients: {ingredientsOutput}</p>
-        <p>Price: <strong>INR {props.price.toFixed(2)}</strong></p>
+        <p>Price: <strong>INR {price.toFixed(2)}</strong></p>
     </div>)
 };
 

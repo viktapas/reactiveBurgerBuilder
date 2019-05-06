@@ -29,3 +29,7 @@
     background-color: rgb(255, 187, 187);
     border-color: red;
 }
+.invalid:focus {
+    outline: none;
+    background-color: rgb(255, 187, 187);
+}
