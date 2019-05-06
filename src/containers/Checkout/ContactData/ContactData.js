@@ -108,6 +108,7 @@ class ContactData extends Component {
                     {
                         valueName: 'Cheapest',
                         value: 'cheapest'
+
                     }]
                 },
                 validation: {
