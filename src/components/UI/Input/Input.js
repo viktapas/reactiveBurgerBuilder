@@ -8,10 +8,10 @@ const Input = (props) => {
     }
     switch (props.elementType) {
         case ('input'):
-            inputElement = <input className={classes.join(' ')} onChange={props.changed} {...props.elementConfig} value={props.value} />;
+            inputElement = <input className={classes.join(' ')} type={props.elementConfig.type} onChange={props.changed} {...props.elementConfig} value={props.value} />;
             break;
         case ('textarea'):
-            inputElement = <textarea className={classes.join(' ')} onChange={props.changed} {...props.elementConfig} value={props.value} />;
+            inputElement = <textarea className={classes.join(' ')} type={props.elementConfig.type} onChange={props.changed} {...props.elementConfig} value={props.value} />;
             break;
         case ('select'):
             inputElement = (
