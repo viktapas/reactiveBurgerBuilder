@@ -121,8 +121,7 @@ class ContactData extends Component {
             }
 
         },
-        isFormValid: false,
-        loading: false
+        isFormValid: false
     }
     orderHandler = (event) => {
         event.preventDefault();
@@ -194,7 +193,7 @@ class ContactData extends Component {
                     disabled={!this.state.isFormValid}>ORDER NOW</Button>
             </form>
         );
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = <Spinner />;
         }
         return (
@@ -210,6 +209,7 @@ const mapStateToProps = state => {
     return {
         ings: state.ingredients,
         price: state.totalPrice,
+        loading: state.loading
     }
 }
 
